@@ -1,0 +1,100 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+class sorter
+{
+public:
+float arr[100];
+int n;
+void accept()
+{
+cout << "Enter The No. of Students" << endl;
+cin>>n;
+cout<<"Enter the First Year Percentage of Students \n";
+for(int i=0;i<n;i++)
+{ cout<<"Student:"<<i+1<<" ";
+cin>>arr[i];
+cout<<endl;
+}
+}
+void display()
+{
+cout<<"The Sorted First Year Percentage List of Students \n";
+for(int i=0;i<n;i++)
+cout<<arr[i]<<endl;
+}
+void five()
+{
+cout<<"\n\nTop five First Year Percentage of Students \n";
+for(int i=n-1;i>n-6;i--)
+cout<<arr[i]<<endl;
+}
+void bubble_Sort()
+{
+int i,j;
+float temp;
+for(i=0;i<n;i++)
+{
+for(j=0;j<n-1-i;j++)
+{
+if(arr[j]>arr[j+1])
+{
+temp=arr[j];
+arr[j]=arr[j+1];
+arr[j+1]=temp;
+}
+}
+}
+}
+void Seletion_Sort()
+{
+int small;float temp;
+for(int i=0;i<n-1;i++)
+{
+small=i;
+for(int j=i+1;j<n;j++)
+{
+if(arr[small]>arr[j])
+small=j;
+}
+if(i!=small)
+{
+temp=arr[i];
+arr[i]=arr[small];
+arr[small]=temp;
+}
+}
+}
+};
+int main()
+{
+int ch;
+sorter a;
+while(1){
+cout<<"1.Bubble Sort"<<endl;
+cout<<"2.Selection Sort"<<endl;
+cout<<"3.Exit\n"<<endl;
+cout<<"Enter Your Choice"<<endl;
+cin>>ch;
+switch(ch)
+{
+case 1:
+a.accept();
+a.bubble_Sort();
+a.display();
+a.five();
+break;
+case 2:
+a.accept();
+a.Seletion_Sort();
+a.display();
+a.five();
+break;
+case 3:
+cout<<"Thank you."<<endl;
+exit(1);
+break;
+}
+}
+return 0;
+}
